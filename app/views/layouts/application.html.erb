@@ -12,8 +12,10 @@
   <body>
     <%= render 'layouts/header' %>
       <main>
-        <%= render 'searches/search' %>
         <p id="notice"><%= notice %></p>
+        <div class="search_form, mt-3 text-center">
+          <%= render 'searches/search' %>
+        </div>
         <%= yield %>
       </main>
     <%= render 'layouts/footer' %>
