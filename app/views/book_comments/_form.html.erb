@@ -1,0 +1,11 @@
+<% if book_comment.errors.any? %>
+  <ul>
+    <%= book_comment.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+<%= form_with model: [book, book_comment], local: true do |f| %>
+  <%= f.text_area :comment, class: 'form-control', rows:'5', placeholder: "コメントをここに" %>
+  <%= f.submit "送信" %>
+<% end %>
