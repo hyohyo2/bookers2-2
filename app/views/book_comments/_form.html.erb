@@ -5,7 +5,7 @@
     <% end %>
   </ul>
 <% end %>
-<%= form_with model: [book, book_comment], local: true do |f| %>
-  <%= f.text_area :comment, class: 'form-control', rows:'5', placeholder: "コメントをここに" %>
+<%= form_with model: [book, book_comment], local: false do |f| %>
+  <%= f.text_area :comment, class: 'form-control', rows:'5', placeholder: "コメントをここに", id: "comment_textarea" %>
   <%= f.submit "送信" %>
 <% end %>
