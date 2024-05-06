@@ -17,6 +17,8 @@ class User < ApplicationRecord
   # フォローされているユーザの取得
   has_many :followers, through: :passive_relationships, source: :follower
 
+  has_many :group_users, dependent: :destroy
+
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :introduction, length: { maximum:50 }
   
