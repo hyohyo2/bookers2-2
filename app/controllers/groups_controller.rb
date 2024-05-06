@@ -7,6 +7,7 @@ class GroupsController < ApplicationController
   
   def create
     @group = Group.new(group_params)
+    @group.owner_id = current_user.id
     if @group.save
       redirect_to groups_path, method: :post
     else
@@ -15,14 +16,16 @@ class GroupsController < ApplicationController
   end
   
   def index
-    @book = Book.new
     @groups = Group.all
+    @book = Book.new
     @user = User.find(current_user.id)
     
   end
   
   def show
-    
+    @group = Group.find(params[:id])
+    @book = Book.new
+    @user = User.find(params[:id])
   end
   
   def edit
@@ -37,5 +40,11 @@ class GroupsController < ApplicationController
     def group_params
       params.require(:group).permit(:name, :introduction, :group_image)
     end
-  
+    
+    def ensure_correct_user
+      @group = Group.find(params[:id])
+      unless @group.owner_od == current_user.id
+        redirect_to groups_path
+      end
+    end
 end
