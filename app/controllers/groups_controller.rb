@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  before_action :authenticate_user!
+  
   def new
     @group = Group.new
   end
@@ -6,13 +8,16 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-      redirect_to users_path
+      redirect_to groups_path, method: :post
     else
       render "new"
     end
   end
   
   def index
+    @book = Book.new
+    @groups = Group.all
+    @user = User.find(current_user.id)
     
   end
   
