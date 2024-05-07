@@ -15,7 +15,7 @@ class Group < ApplicationRecord
   
   # userがグループメンバーかどうか判定する
   def includesUser?(user)
-    group_user.exists?(user_id: user.id)
+    group_users.exists?(user_id: user.id)
   end
   
 end
