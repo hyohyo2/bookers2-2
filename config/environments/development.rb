@@ -84,7 +84,7 @@ Rails.application.configure do
     domain: 'gmail.com',
     user_name: '送信元となるGmailアドレスを記入',
     password: 'アプリパスワードを記入',
-    authentication: 'login',
+    authentication: 'plain',
     enable_starttls_auto: true
   }
 

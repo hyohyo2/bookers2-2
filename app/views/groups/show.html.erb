@@ -35,23 +35,28 @@
                 <li style="list-style: none;"><%= user.name %></li>
               <% end %>
             </td>
-            <td>
+            
               <!--ログインユーザーがオーナーか-->
               <% if @group.is_owned_by?(current_user) %>
-                <%= link_to 'Edit', edit_group_path(@group),class: "btn btn-sm btn-success" %>
-              <!--ログインユーザーがメンバーか-->
-              <% elsif @group.includesUser?(current_user) %>
-                <%= link_to 'Leave this group', group_group_users_path(@group), method: :delete, class: "btn btn-sm btn-danger" %>
+                <td>
+                  <!--Editボタンの表示-->
+                  <%= link_to 'Edit', edit_group_path(@group),class: "btn btn-sm btn-success" %>
+                </td>
+                <td>
+                  <!--グループ作成者のみ表示メール送信フォームボタン-->
+                  <%= link_to 'Notice an Event',new_group_event_notice_path(@group), class: "btn btn-sm btn-info" %>
+                </td>
               <% else %>
-                <%= link_to 'Join this group', group_group_users_path(@group), method: :post, class: "btn btn-sm btn-success" %>
+                <!--ログインユーザーがメンバーか-->
+                <% if @group.includesUser?(current_user) %>
+                <td>
+                  <%= link_to 'Leave this group', group_group_users_path(@group), method: :delete, class: "btn btn-sm btn-danger" %>
+                <% else %>
+                  <%= link_to 'Join this group', group_group_users_path(@group), method: :post, class: "btn btn-sm btn-success" %>
+                <% end %>
               <% end %>
-            </td>
-            <!--グループ作成者のみ表示メール送信フォームボタン-->
-            <td>
-              <% if @group.is_owned_by?(current_user) %>
-                <%= link_to 'Notice an Event',group_new_mail_path(@group), class: "btn btn-sm btn-info" %>
-              <% end %>
-            </td>
+            
+            
           </tr>
         </tbody>
       </table>
