@@ -1,4 +1,4 @@
-<table class='table'>
+<table class='table table-hover table-inverse'>
   <thead>
     <tr>
       <th></th>
@@ -11,6 +11,7 @@
   <tbody>
     <% groups.each do |group| %>
       <tr>
+        <!--グループ画像-->
         <td>
           <% if group.group_image.attached? %>
             <%= image_tag group.group_image, size: "50x50" %>
@@ -18,6 +19,7 @@
             <%= image_tag 'no_image', size: "50x50" %>
           <% end %>
         </td>
+        <!--グループ名＆リンク-->
         <td><%= link_to group.name,group_path(group) %></td>
         <td><%= group.introduction %></td>
         <!--メンバー数の表示-->
