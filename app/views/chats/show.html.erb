@@ -1,6 +1,6 @@
 <h2 id="room" date-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %>さんとのチャット</h2>
 
-<div class="message" style="width: 400px;">
+<div class="message" style="width: 75% ;">
   <% @chats.each do |chat| %>
     <% if chat.user_id == current_user.id %>
       <%= render "chats/chat", chat: chat %>
