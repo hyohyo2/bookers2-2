@@ -1,6 +1,6 @@
-<h2 id="room" date-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %>さんとのチャット</h2>
+<h2 id="room" style=" text-align:center;"  date-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %>さんとのチャット</h2>
 
-<div class="message" style="width: 75% ;">
+<div class="message" style="width: 75% ; margin:0 auto;">
   <% @chats.each do |chat| %>
     <% if chat.user_id == current_user.id %>
       <%= render "chats/chat", chat: chat %>
@@ -12,12 +12,14 @@
     <% end %>
   <% end %>
 </div>
-<div>
+<div class="errors">
   <%= render "layouts/errors", obj: @chat %>
 </div>
 
 <%= form_with model: @chat, data: {remote: true} do |f| %>
+<div class="form" style="width:75%; margin:0 auto;">
   <%= f.text_field :message %>
   <%= f.submit "送信", class: "btn btn-sm btn-info" %>
   <%= f.hidden_field :room_id %>
+</div>
 <% end %>

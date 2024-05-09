@@ -25,6 +25,7 @@
       <i class="fas fa-user-cog"></i>
     <% end %>
   <% end %>
+  <!--相互フォローのみ「chat始める」を表示する。-->
   <% if current_user != user && current_user.following?(user) && user.following?(current_user) %>
     <%= link_to "chatを始める", chat_path(user.id), class: "ml-3" %>
   <% end %>

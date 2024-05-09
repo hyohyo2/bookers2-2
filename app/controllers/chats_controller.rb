@@ -17,11 +17,12 @@ class ChatsController < ApplicationController
       UserRoom.create(user_id: current_user.id, room_id: @room.id)
       UserRoom.create(user_id: @user.id, room_id: @room.id)
     end
-    
+    # チャットルームに関連付けられたメッセージを取得
     @chats = @room.chats
+    # 新しいメッセージを作成するための空のchatオブジェクト生成
     @chat = Chat.new(room_id: @room.id)
   end
-  
+  # チャットメッセージの送信
   def create
     @chat = current_user.chats.new(chat_params)
     render :validate unless @chat.save
