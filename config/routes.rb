@@ -19,5 +19,7 @@ Rails.application.routes.draw do
     resources :event_notices, only:[:new, :create]
     get "event_notices" => "event_notices#sent"
   end
+  # DM機能
+  resources :chats, only:[:show, :create, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
