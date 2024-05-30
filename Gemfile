@@ -58,3 +58,4 @@ gem 'devise'
 
 gem 'jquery-rails'
 gem 'kaminari', '~> 1.2.1'
+gem 'bootstrap5-kaminari-views'

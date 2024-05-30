@@ -9,6 +9,10 @@
     <div class='col-md-8 offset-md-1'>
       <h2>Books</h2>
       <%= render 'books/index',books: @books %>
+      <!--ページネーション追加-->
+      <div class="d-flex justify-content-center">
+      <%= paginate @books, theme: 'bootstrap-5' %>
+      </div>
       <h3>投稿数の前日比・前週比</h3>
         <div class="table_width">
           <table class="table table-bordered">
